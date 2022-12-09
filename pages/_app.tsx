@@ -1,3 +1,4 @@
+import { Seo } from '@components/shared';
 import '@interceptors/request';
 import '@interceptors/response';
 import { store } from '@stores/index';
@@ -9,6 +10,7 @@ import '../styles/sass/index.scss';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
+      <Seo />
       <Component {...pageProps} />
     </Provider>
   );

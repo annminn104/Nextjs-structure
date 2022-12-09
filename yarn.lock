@@ -10190,9 +10190,9 @@
     "walker" "~1.0.5"
 
 "sass@^1.56.1":
-  "integrity" "sha512-VpEyKpyBPCxE7qGDtOcdJ6fFbcpOM+Emu7uZLxVrkX8KVU/Dp5UF7WLvzqRuUhB6mqqQt1xffLoG+AndxTZrCQ=="
-  "resolved" "https://registry.npmjs.org/sass/-/sass-1.56.1.tgz"
-  "version" "1.56.1"
+  "integrity" "sha512-ciEJhnyCRwzlBCB+h5cCPM6ie/6f8HrhZMQOf5vlU60Y1bI1rx5Zb0vlDZvaycHsg/MqFfF1Eq2eokAa32iw8w=="
+  "resolved" "https://registry.npmjs.org/sass/-/sass-1.56.2.tgz"
+  "version" "1.56.2"
   dependencies:
     "chokidar" ">=3.0.0 <4.0.0"
     "immutable" "^4.0.0"
