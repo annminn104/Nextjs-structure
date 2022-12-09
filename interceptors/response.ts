@@ -2,7 +2,7 @@ import { Axios } from '@utils/axios';
 import { AxiosError, AxiosResponse } from 'axios';
 
 Axios.interceptors.response.use(
-  (response: AxiosResponse) => {
+  (response: AxiosResponse<any, any>) => {
     return response.data;
   },
   async (error: AxiosError): Promise<string> => {
