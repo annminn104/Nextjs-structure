@@ -33,6 +33,8 @@
     "@storybook/addon-essentials": "^6.5.14",
     "@storybook/addon-interactions": "^6.5.14",
     "@storybook/addon-links": "^6.5.14",
+    "@storybook/builder-webpack5": "^6.5.14",
+    "@storybook/manager-webpack5": "^6.5.14",
     "@storybook/react": "^6.5.14",
     "@storybook/testing-library": "^0.0.13",
     "@types/node": "18.11.11",
@@ -45,5 +47,8 @@
     "husky": "^8.0.2",
     "typescript": "4.9.3",
     "webpack": "^5.75.0"
+  },
+  "resolutions": {
+    "webpack": "^5"
   }
 }
