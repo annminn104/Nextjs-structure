@@ -1,3 +1,4 @@
+/* Cookie is a class that provides static methods for getting, setting, and removing cookies. */
 export class Cookie {
   static Get(key: string): string {
     let cookies = document.cookie;

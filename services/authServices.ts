@@ -11,11 +11,16 @@ import { AxiosPromise } from 'axios';
 class AuthService {
   isLogined: boolean = false;
 
+  /**
+   * It sends a POST request to the server with the data provided by the user, and if the server responds
+   * with a success code, it sets the token in the local storage
+   * @param {ILoginRequest} data - ILoginRequest
+   * @returns res
+   */
   async login(data: ILoginRequest): Promise<AxiosPromise> {
     try {
       const res = await Axios.post(AUTH_ENDPOINT.LOGIN, data);
       this.isLogined = true;
-
       if (res.data.code == 'SUCCESS') {
         this.setToken(res.data.accessToken);
       }
@@ -26,6 +31,12 @@ class AuthService {
     }
   }
 
+  /**
+   * It takes in a data object of type IRegisterRequest, and returns a promise of type AxiosPromise
+   * @param {IRegisterRequest} data - IRegisterRequest - this is the data that we are sending to the
+   * server.
+   * @returns res
+   */
   async register(data: IRegisterRequest): Promise<AxiosPromise> {
     try {
       const res = await Axios.post(AUTH_ENDPOINT.REGISTER, data);
@@ -35,18 +46,31 @@ class AuthService {
     }
   }
 
+  /**
+   * It sets the access token and refresh token in the browser's cookies
+   * @param {ITokenResponse} data - ITokenResponse - this is the response from the server when you call
+   * the login method.
+   */
   setToken(data: ITokenResponse) {
     const expired = new Date(data.accessTokenExpired);
     Cookie.Set('accessToken', data.accessToken, expired);
     Cookie.Set('refreshToken', data.refreshToken);
   }
 
+  /**
+   * It sends a POST request to the refresh token endpoint with the refresh token stored in the cookie
+   * @returns AxiosPromise
+   */
   refreshToken(): AxiosPromise {
     return Axios.post(AUTH_ENDPOINT.REFRESH_TOKEN, {
       refreshToken: Cookie.Get('refreshToken'),
     });
   }
 
+  /**
+   * It returns the value of the cookie named 'accessToken'
+   * @returns The access token from the cookie.
+   */
   getAccessToken() {
     return Cookie.Get('accessToken');
   }

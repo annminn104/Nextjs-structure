@@ -18,6 +18,7 @@ const initialState: any = {
   },
 };
 
+/* Creating a slice of the redux store. */
 const authSlice = createSlice({
   name: 'auth',
   initialState,
