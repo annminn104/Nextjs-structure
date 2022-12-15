@@ -1,0 +1,44 @@
+@use "../variables/layout" as *;
+@use '../variables/color' as *;
+@use "./display" as *;
+@use './position' as *;
+@use './font' as *;
+
+@mixin make-wrapper {
+  background: $wrapper-bg;
+}
+
+@mixin make-header {
+  @include make-position($header-position);
+  @include make-flex($align-items: center, $justify-content: center);
+
+  margin: $header-margin-y $header-margin-x;
+  box-shadow: $header-box-shadow;
+  padding: $header-padding-y $header-padding-x;
+  background: $header-bg-light;
+
+  @include make-font();
+
+  color: $default-text-color;
+}
+
+@mixin make-footer {
+  @include make-position($header-position);
+  @include make-flex($align-items: center, $justify-content: center);
+
+  margin: $header-margin-y $header-margin-x;
+  box-shadow: $header-box-shadow;
+  padding: $header-padding-y $header-padding-x;
+  background: $header-bg-light;
+
+  @include make-font();
+
+  color: $default-text-color;
+}
+
+@mixin make-body {
+  margin: $body-margin-y $body-margin-x;
+  padding: $body-padding-y $body-padding-x;
+
+  min-height: $body-min-height;
+}

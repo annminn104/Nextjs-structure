@@ -4,6 +4,8 @@ import {
   IRegisterRequest,
   ITokenResponse,
 } from '@interfaces/auth';
+import { store } from '@stores/index';
+import { setUser } from '@stores/reducers/authSlice';
 import { Axios } from '@utils/axios';
 import { Cookie } from '@utils/cookie';
 import { AxiosPromise } from 'axios';
@@ -22,9 +24,9 @@ class AuthService {
       const res = await Axios.post(AUTH_ENDPOINT.LOGIN, data);
       this.isLogined = true;
       if (res.data.code == 'SUCCESS') {
-        this.setToken(res.data.accessToken);
+        this.setToken(res.data.data);
       }
-      return res;
+      return res.data;
     } catch (error) {
       this.isLogined = false;
       return Promise.reject(error);
@@ -40,7 +42,7 @@ class AuthService {
   async register(data: IRegisterRequest): Promise<AxiosPromise> {
     try {
       const res = await Axios.post(AUTH_ENDPOINT.REGISTER, data);
-      return res;
+      return res.data;
     } catch (error) {
       return Promise.reject(error);
     }
@@ -73,6 +75,31 @@ class AuthService {
    */
   getAccessToken() {
     return Cookie.Get('accessToken');
+  }
+
+  /**
+   * If the user is logged in, return true. If the user has a valid access token or refresh token, return
+   * true. Otherwise, return false
+   */
+  isAuthenticated() {
+    if (this.isLogined) {
+      return true;
+    } else if (!!Cookie.Get('accessToken') || !!Cookie.Get('refreshToken')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  async profile() {
+    try {
+      const res = await Axios.get(AUTH_ENDPOINT.PROFILE);
+      console.log(res.data);
+      store.dispatch(setUser(res.data));
+      return res.data;
+    } catch (error) {
+      return Promise.reject(error);
+    }
   }
 }
 

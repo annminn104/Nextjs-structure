@@ -19,8 +19,8 @@ export interface IUserResponse {
 
 export interface ITokenResponse {
   accessToken: string;
-  accessTokenExpired: string;
   refreshToken: string;
+  accessTokenExpired: string;
 }
 
 export type ILoginResponse = ITokenResponse & IUserResponse;
