@@ -2,17 +2,20 @@ import { Axios } from '@utils/axios';
 import { Cookie } from '@utils/cookie';
 import { AxiosError, AxiosRequestConfig } from 'axios';
 
-/* Intercepting the request and adding the access token to the header. */
 Axios.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
+  /* A function that takes in a config object and returns a config object. */
+  (config: AxiosRequestConfig): AxiosRequestConfig => {
+    // console.log('REQUEST INTERCEPTOR FULFILLED');
     const access_token = Cookie.Get('accessToken');
     const refresh_token = Cookie.Get('refreshToken');
-    if (refresh_token) {
-      config.headers!.Authorization = `Bearer ${refresh_token}`;
+    if (access_token) {
+      config.headers!.Authorization = `Bearer ${access_token}`;
     }
     return config;
   },
-  async (error: AxiosError): Promise<string> => {
-    return Promise.reject(error);
+  /* Returning a promise that rejects the error message. */
+  async (error: AxiosError): Promise<AxiosError> => {
+    // console.log('REQUEST INTERCEPTOR REJECTED');
+    return Promise.reject(error.message);
   }
 );

@@ -7,14 +7,16 @@
     "npm": ">=8.1.0"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 4200",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write .",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "changelog": "auto-changelog --template keepachangelog --hide-credit --commit-limit false --sort-commits date-desc",
+    "changelog:commit": "npm run changelog && git add * && git commit --amend --no-edit"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",

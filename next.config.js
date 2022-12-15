@@ -11,33 +11,30 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'styles')],
   },
 
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
-      use: [
-        {
-          loader: '@svgr/webpack',
-          options: {
-            typescript: true,
-            icon: true,
-          },
-        },
-      ],
+  // other existing configurations here...
+  webpack: (config) => {
+    const rules = config.module.rules
+      .find((rule) => typeof rule.oneOf === 'object')
+      .oneOf.filter((rule) => Array.isArray(rule.use));
+    rules.forEach((rule) => {
+      rule.use.forEach((moduleLoader) => {
+        if (
+          moduleLoader.loader !== undefined &&
+          moduleLoader.loader.includes('css-loader') &&
+          typeof moduleLoader.options.modules === 'object'
+        ) {
+          moduleLoader.options = {
+            ...moduleLoader.options,
+            modules: {
+              ...moduleLoader.options.modules,
+              // This is where we allow camelCase class names
+              exportLocalsConvention: 'camelCase',
+            },
+          };
+        }
+      });
     });
-    // config.plugins.push(
-    //   new MiniCssExtractPlugin({
-    //     // Options similar to the same options in webpackOptions.output
-    //     // both options are optional
-    //     filename: 'static/chunks/pages/[contenthash].css',
-    //     chunkFilename: 'static/chunks/pages/[contenthash].css',
-    //   })
-    // );
 
-    // config.module.rules.push({
-    //   test: /\.(sa|sc|c)ss$/i,
-    //   use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-    // });
     return config;
   },
 };

@@ -1,0 +1,10 @@
+@mixin make-flex($flex-flow: row wrap, $align-items: '', $justify-content: '') {
+  display: flex;
+  flex-flow: $flex-flow;
+  @if ($align-items != '') {
+    align-items: $align-items;
+  }
+  @if ($justify-content != '') {
+    justify-content: $justify-content;
+  }
+}
