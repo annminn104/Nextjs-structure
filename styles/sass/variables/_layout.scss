@@ -1,0 +1,29 @@
+@use './color';
+@use './font';
+
+$wrapper-bg: #fefefe;
+
+$header-bg-light: #fff;
+$header-padding-y: 1.5rem;
+$header-padding-x: 1rem;
+$header-margin-x: 0;
+$header-margin-y: 0;
+$header-position: static;
+$header-box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+
+$footer-bg-light: #fff;
+$footer-padding-y: 1.5rem;
+$footer-padding-x: 1rem;
+$footer-margin-x: 0;
+$footer-margin-y: 0;
+$footer-position: static;
+$footer-box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+
+$body-padding-y: 1.5rem;
+$body-padding-x: 1rem;
+$body-margin-x: 0;
+$body-margin-y: 0;
+$body-min-height: calc(
+  100vh - ($header-padding-y * 2) - ($footer-padding-y * 2) -
+    (font.$default-line-height * font.$default-font-size * 2)
+);

@@ -6,11 +6,6 @@ const path = require('path');
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
-  },
-
   // other existing configurations here...
   webpack: (config) => {
     const rules = config.module.rules

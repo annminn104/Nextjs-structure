@@ -1,3 +1,4 @@
+import { Body, Footer, Header, Wrapper } from '@components/layout';
 import { Seo } from '@components/shared';
 import '@interceptors/request';
 import '@interceptors/response';
@@ -11,7 +12,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <Seo />
-      <Component {...pageProps} />
+      <Wrapper>
+        <Header></Header>
+        <Body>
+          <Component {...pageProps} />
+        </Body>
+        <Footer></Footer>
+      </Wrapper>
     </Provider>
   );
 }
