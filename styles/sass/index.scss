@@ -1,3 +1,8 @@
 @import './bases/index.scss';
 @import './variables/index.scss';
+@import './modules/index.scss';
 @import './pages/index.scss';
+.skeleton-test {
+  width: 500px;
+  height: 500px;
+}

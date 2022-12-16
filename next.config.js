@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 
-const path = require('path');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin/dist/index');
-
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    domains: ['images.unsplash.com'],
+  },
+
   // other existing configurations here...
   webpack: (config) => {
     const rules = config.module.rules
