@@ -18,6 +18,12 @@
     "release": "release-it"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.0",
+    "@next/font": "^13.0.7",
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.1",
     "next": "13.0.6",

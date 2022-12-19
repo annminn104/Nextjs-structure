@@ -13,6 +13,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "jsxImportSource": "@emotion/react",
     "incremental": true,
     "baseUrl": "./",
     "paths": {
@@ -28,7 +29,8 @@
       "@assets/*": ["public/assets/*"],
       "@stores/*": ["stores/*"],
       "@services/*": ["services/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@configs/*": ["configs/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next.config.js"],
