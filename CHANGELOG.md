@@ -1,3 +1,7 @@
+
+
+## [0.3.1](https://github.com/annminn104/Nextjs-structure/compare/0.3.0...0.3.1) (2022-12-19)
+
 ## [0.3.0](https://github.com/annminn104/Nextjs-structure/compare/0.1.1...0.3.0) (2022-12-16)
 
 ### Features
