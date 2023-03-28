@@ -14,6 +14,7 @@ export const Login = () => {
     dispatch(userLogin(mockupAuth))
       .unwrap()
       .then((res) => {
+        console.log('dev-test');
         router.push('/dashboard');
       })
       .catch((err) => {
